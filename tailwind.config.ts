@@ -8,13 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        'cta-stroke-primary': 'var(--CTA-Stroke-cta-stroke-primary, #3B3B3B)',
+        'bg-neutral-700': 'var(--bg-neutral-700, #585660)',
+
+      },
+      spacing: {
+        'Spacing2': '8px',
+        'Spacing4': '16px',
+        'Spacing6': '24px',
+      },
+      borderRadius: {
+        'rounded-lg': '8px',
+        'rounded-2xl': '16px',
       },
     },
   },
   plugins: [],
 };
+
 export default config;

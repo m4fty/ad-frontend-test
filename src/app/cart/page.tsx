@@ -1,14 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Cart from "@/components/Cart/Cart";
 
-import GameCatalog from "@/components/Games/GameCatalog";
-
-export default function Home() {
+export default function CartPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex flex-col">
-        <GameCatalog />
+      <main className="flex flex-col p-6 flex-1">
+        <Cart />
       </main>
       <Footer />
     </div>

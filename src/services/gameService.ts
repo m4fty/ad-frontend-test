@@ -7,7 +7,6 @@ export async function fetchGames({ genre, page }: { genre?: string; page?: numbe
   const useMock = process.env.USE_MOCK === "true";
   if (useMock) {
     let games = allGames;
-
     if (genre) {
       games = games.filter(
         (game) => game.genre.toLowerCase() === genre.toLowerCase()
@@ -16,7 +15,7 @@ export async function fetchGames({ genre, page }: { genre?: string; page?: numbe
 
     if (!page || page < 1) page = 1;
 
-    // Simulate delay for mock
+    // delay for mock
     await delay(2000);
 
     const fromIndex = (page - 1) * ITEMS_PER_PAGE;
