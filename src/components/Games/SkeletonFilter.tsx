@@ -2,7 +2,7 @@
 
 const SkeletonFilter = () => {
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 sd:h-[50px] md:h-[100px] lg:h-[150px]">
+    <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 sd:h-[50px] md:h-[100px] lg:h-[185px]">
       <h1 className="text-2xl font-bold text-gray-800 py-6 uppercase lg:capitalize">
         Top Sellers
       </h1>

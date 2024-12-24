@@ -3,7 +3,7 @@
 import { useGameStore } from "@/store/useGameStore";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
 const Cart = () => {
@@ -19,12 +19,12 @@ const Cart = () => {
   };
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-6 p-6">
-      <div className="flex-1 md:mr-8">
+    <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-6 p-x">
+      <div className="flex-1">
         <div className="mb-4">
           <Link
             href="/"
-            className="flex items-center text-neutral-700 hover:underline"
+            className="flex items-center text-bg-neutral-700 hover:underline"
           >
             <FaArrowLeft className="mr-2" />
             Back to Catalog
@@ -43,14 +43,14 @@ const Cart = () => {
         {cart.length === 0 ? (
           <p className="text-gray-500">Your cart is empty.</p>
         ) : (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             {cart.map((game) => (
               <div
                 key={game.id}
-                className="flex items-center justify-between border-b pb-4"
+                className="relative border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-[120px] h-[80px] relative">
+                <div className="relative flex-shrink-0 mb-4 flex w-full h-[200px] md:w-[120px] md:h-[80px] md:mb-0 md:flex-row">
+                  <div className="w-full h-full relative md:w-[120px] md:h-[80px]">
                     <Image
                       src={game.image}
                       alt={game.name}
@@ -59,27 +59,37 @@ const Cart = () => {
                       className="rounded"
                     />
                   </div>
-                  <div>
-                    <p className="text-gray-500 text-xs font-bold uppercase">
-                      {game.genre}
-                    </p>
-                    <h3 className="text-lg font-bold">{game.name}</h3>
-                    <p className="text-gray-400 text-sm">
-                      {game.description || "Description if necessary."}
-                    </p>
+
+                  <div className="w-[10%] flex items-start justify-center md:hidden">
+                    <button
+                      onClick={() => handleRemove(game.id, game.name)}
+                      className="text-gray-400 hover:text-red-500 text-xl"
+                      aria-label="Remove item"
+                    >
+                      <FaTimes />
+                    </button>
                   </div>
                 </div>
 
-                <div className="flex flex-col items-end gap-2">
-                  <p className="text-lg font-bold">${game.price.toFixed(2)}</p>
-                  <button
-                    onClick={() => handleRemove(game.id, game.name)}
-                    className="text-gray-400 hover:text-red-500 text-lg font-bold"
-                    aria-label="Remove item"
-                  >
-                    ×
-                  </button>
+                <div className="flex-1 md:pl-4">
+                  <p className="text-gray-500 text-xs font-bold uppercase mb-1">
+                    {game.genre}
+                  </p>
+                  <h3 className="text-lg font-bold">{game.name}</h3>
+                  <p className="text-gray-400 text-sm mb-2">
+                    {game.description || "No description."}
+                  </p>
+                  <p className="text-lg font-bold mt-4 text-right">
+                    ${game.price.toFixed(2)}
+                  </p>
                 </div>
+                <button
+                  onClick={() => handleRemove(game.id, game.name)}
+                  className="hidden md:block absolute md:top-0 right-0 md:ml-auto md:text-right text-gray-400 hover:text-red-500"
+                  aria-label="Remove item"
+                >
+                  <FaTimes />
+                </button>
               </div>
             ))}
           </div>
