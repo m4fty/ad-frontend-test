@@ -5,7 +5,11 @@ import { useGameStore } from "@/store/useGameStore";
 import { Game } from "@/types/game";
 
 const GameElement = ({ game }: { game: Game }) => {
-  const { addToCart } = useGameStore();
+  const { addToCart, setGenre } = useGameStore();
+
+  const handleGenreClick = (genre: string) => {
+    setGenre(genre);
+  };
 
   return (
     <div
@@ -28,7 +32,12 @@ const GameElement = ({ game }: { game: Game }) => {
       </div>
 
       <div className="py-4">
-        <p className="text-[16px] font-bold text-gray-500 mb-2">{game.genre}</p>
+        <p
+          className="text-[16px] font-bold text-gray-500 mb-2 cursor-pointer hover:underline"
+          onClick={() => handleGenreClick(game.genre)}
+        >
+          {game.genre}
+        </p>
 
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-sm font-bold text-gray-800">{game.name}</h3>

@@ -116,8 +116,7 @@ const Cart = () => {
             <p className="text-lg font-bold">Order Total</p>
             <p className="text-lg font-bold">${total.toFixed(2)}</p>
           </div>
-
-          <button className="w-full bg-neutral-700 text-white py-3 rounded-lg hover:bg-neutral-800">
+          <button className="button-primary w-full py-3 rounded-lg">
             Checkout
           </button>
         </div>

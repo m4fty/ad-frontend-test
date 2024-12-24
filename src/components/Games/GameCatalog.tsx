@@ -70,7 +70,7 @@ const GameCatalog = () => {
       ) : (
         <GameFilters />
       )}
-      <div className="w-full max-w-[1280px] h-auto gap-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-12 px-4">
+      <div className="w-full max-w-[1280px] h-auto gap-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-6 md:py-12 px-4">
         {showSkeleton || (loading && !isLoadingMore)
           ? renderSkeletons()
           : games
