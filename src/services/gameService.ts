@@ -1,10 +1,10 @@
 import { allGames, availableFilters, delay } from "@/utils/endpoint";
-import { API_URL } from "@/utils/endpoint";
+import { NEXT_PUBLIC_API_URL } from "@/utils/endpoint";
 
 const ITEMS_PER_PAGE = 12;
 
 export async function fetchGames({ genre, page }: { genre?: string; page?: number }) {
-  const useMock = process.env.USE_MOCK === "yes";
+  const useMock = process.env.NEXT_PUBLIC_USE_MOCK === "yes";
   if (useMock) {
     let games = allGames;
     if (genre) {
@@ -36,7 +36,7 @@ export async function fetchGames({ genre, page }: { genre?: string; page?: numbe
   if (genre) params.append("genre", genre);
   if (page) params.append("page", page.toString());
 
-  const response = await fetch(`${API_URL}/games?${params.toString()}`);
+  const response = await fetch(`${NEXT_PUBLIC_API_URL}/games?${params.toString()}`);
   
   return response.json();
 }
