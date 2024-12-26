@@ -49,17 +49,17 @@ const Cart = () => {
                 key={game.id}
                 className="relative border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between"
               >
-                <div className="relative flex-shrink-0 mb-4 flex w-full h-[200px] md:w-[120px] md:h-[80px] md:mb-0 md:flex-row">
+                <div className="div_image_shrink">
                   <div className="w-full h-full relative md:w-[120px] md:h-[80px]">
+                    {game.isNew && <span className="chip_container">New</span>}
                     <Image
                       src={game.image}
                       alt={game.name}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
+                      className="rounded object-cover"
                     />
                   </div>
-
                   <div className="w-[10%] flex items-start justify-center md:hidden">
                     <button
                       onClick={() => handleRemove(game.id, game.name)}

@@ -13,6 +13,7 @@ const ROW_SIZE = 3;
 const GameCatalog = () => {
   const { games, loading, fetchGames, page, totalPages, genre, rehydrated } =
     useGameStore();
+  const { cart } = useGameStore();
   const [visibleGames, setVisibleGames] = useState(ROW_SIZE * 2);
   const [showSkeleton, setShowSkeleton] = useState(true);
   const [skeletonCount, setSkeletonCount] = useState(6);
@@ -60,12 +61,14 @@ const GameCatalog = () => {
     ));
   };
 
+  const isInCart = (id: string) => cart.some((game) => game.id === id);
+
   return (
     <>
+      {loading && <LoadingPage />}
       {showSkeleton || (loading && !isLoadingMore) ? (
         <>
           <SkeletonFilter />
-          <LoadingPage />
         </>
       ) : (
         <GameFilters />
@@ -75,7 +78,13 @@ const GameCatalog = () => {
           ? renderSkeletons()
           : games
               .slice(0, visibleGames)
-              .map((game) => <GameElement key={game.id} game={game} />)}
+              .map((game) => (
+                <GameElement
+                  key={game.id}
+                  game={game}
+                  isInCart={isInCart(game.id)}
+                />
+              ))}
         {!loading && page < totalPages && (
           <div className="flex justify-center md:justify-start md:my-6">
             <button

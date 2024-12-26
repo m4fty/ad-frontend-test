@@ -1,7 +1,7 @@
 import { allGames, availableFilters, delay } from "@/utils/endpoint";
 import { NEXT_PUBLIC_API_URL } from "@/utils/endpoint";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 6;
 
 export async function fetchGames({ genre, page }: { genre?: string; page?: number }) {
   const useMock = process.env.NEXT_PUBLIC_USE_MOCK === "yes";

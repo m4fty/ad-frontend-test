@@ -22,7 +22,7 @@ const Header: React.FC = () => {
           >
             <AiOutlineShoppingCart size={24} />
             {cart.length > 0 && (
-              <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              <span className="header-cart-span">
                 {cart.length}
               </span>
             )}

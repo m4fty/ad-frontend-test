@@ -3,15 +3,16 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-neutral-700 h-[172px] flex justify-center items-center">
+    <footer className="footer-container">
     <Link href="/">
-      <Image
-        src="/logo.svg"
-        alt="Logo"
-        width={170}
-        height={44.09}
-        className="cursor-pointer"
-      />
+    <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={170}
+          height={44.09}
+          priority
+          className="cursor-pointer"
+        />
     </Link>
   </footer>
   
